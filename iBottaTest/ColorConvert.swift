@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ColorConvert.swift
 //  iBottaTest
 //
 //  Created by Tatsuya Moriguchi on 10/19/20.
