@@ -11,22 +11,22 @@ import UIKit
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellID = "cellID"
-    let offers = [Team(image: "iu-1.jpg", name: "Banana"),
-                 Team(image: "iu-2.jpg", name: "Peach"),
-                 Team(image: "iu-3.jpg", name: "Kiwi"),
-                 Team(image: "iu-4.jpg", name: "Grape"),
-                 Team(image: "iu-5.jpg", name: "Apple"),
-                 Team(image: "iu-6.jpg", name: "Pear"),
-                 Team(image: "iu-7.jpg", name: "Passion Fruit"),
-                 Team(image: "iu-8.jpg", name: "Lemon"),
-                 Team(image: "iu-9.jpg", name: "Strawberry"),
-                 Team(image: "iu-10.jpg", name: "Pomegranate"),
-                 Team(image: "iu-11.jpg", name: "Watermelon"),
-                 Team(image: "iu-12.jpg", name: "Orange"),
-                 Team(image: "iu-13.jpg", name: "Blueberry"),
-                 Team(image: "iu-14.jpg", name: "Blackberry"),
-                 Team(image: "iu-15.jpg", name: "Cherry"),
-                 Team(image: "iu-16.png", name: "Scotch Brite")
+    let offers = [Offer(image: "iu-1.jpg", name: "Banana"),
+                 Offer(image: "iu-2.jpg", name: "Peach"),
+                 Offer(image: "iu-3.jpg", name: "Kiwi"),
+                 Offer(image: "iu-4.jpg", name: "Grape"),
+                 Offer(image: "iu-5.jpg", name: "Apple"),
+                 Offer(image: "iu-6.jpg", name: "Pear"),
+                 Offer(image: "iu-7.jpg", name: "Passion Fruit"),
+                 Offer(image: "iu-8.jpg", name: "Lemon"),
+                 Offer(image: "iu-9.jpg", name: "Strawberry"),
+                 Offer(image: "iu-10.jpg", name: "Pomegranate"),
+                 Offer(image: "iu-11.jpg", name: "Watermelon"),
+                 Offer(image: "iu-12.jpg", name: "Orange"),
+                 Offer(image: "iu-13.jpg", name: "Blueberry"),
+                 Offer(image: "iu-14.jpg", name: "Blackberry"),
+                 Offer(image: "iu-15.jpg", name: "Cherry"),
+                 Offer(image: "iu-16.png", name: "Scotch Brite")
         
     ]
     
@@ -70,7 +70,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
 class OfferCell: UICollectionViewCell {
     
     
-    var offer: Team? {
+    var offer: Offer? {
         
         didSet {
             guard let offerImage = offer?.image else { return }
@@ -135,10 +135,11 @@ class OfferCell: UICollectionViewCell {
     }
 }
 
-struct Team {
+struct Offer {
     let image: String?
     let name: String?
 }
+
 
 
 extension UIView {
@@ -198,12 +199,6 @@ extension UIView {
         }
         return rightAnchor
     }
-    
-    
-    
-    
-    
-    
     
 }
 
