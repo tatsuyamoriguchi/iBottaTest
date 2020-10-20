@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellID = "cellID"
-    let teams = [Team(image: "iu-1.jpg", name: "Banana"),
+    let offers = [Team(image: "iu-1.jpg", name: "Banana"),
                  Team(image: "iu-2.jpg", name: "Peach"),
                  Team(image: "iu-3.jpg", name: "Kiwi"),
                  Team(image: "iu-4.jpg", name: "Grape"),
@@ -37,24 +37,24 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.navigationBar.barTintColor = ColorConvert().hexStringToUIColor(hex: "ABFCD6", alphaValue: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
         
-        collectionView?.register(TeamCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView?.register(OfferCell.self, forCellWithReuseIdentifier: cellID)
         
         
         
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return teams.count
+        return offers.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TeamCell
-        cell.team = teams[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OfferCell
+        cell.offer = offers[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width / 2) - 16, height: 100)
+        return CGSize(width: (view.frame.width / 2) - 16, height: 150)
     }
     
     
@@ -67,17 +67,17 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
 }
 
 
-class TeamCell: UICollectionViewCell {
+class OfferCell: UICollectionViewCell {
     
     
-    var team: Team? {
+    var offer: Team? {
         
         didSet {
-            guard let teamImage = team?.image else { return }
-            guard let teamName = team?.name else { return }
+            guard let offerImage = offer?.image else { return }
+            guard let offerName = offer?.name else { return }
             
-            teamImageView.image = UIImage(named: teamImage)
-            teamNameLabel.text = teamName
+            offerImageView.image = UIImage(named: offerImage)
+            offerNameLabel.text = offerName
         }
     }
     
@@ -103,27 +103,27 @@ class TeamCell: UICollectionViewCell {
     func setup() {
         self.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
         
-        self.addSubview(teamImageView)
-        self.addSubview(teamNameLabel)
+        self.addSubview(offerImageView)
+        self.addSubview(offerNameLabel)
         
         
-        teamImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 50)
-        teamNameLabel.anchor(top: teamImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        offerImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        offerNameLabel.anchor(top: offerImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
         
     }
     
-    let teamImageView: UIImageView = {
+    let offerImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.backgroundColor = ColorConvert().hexStringToUIColor(hex: "DFDFDF", alphaValue: 1.0)
         return iv
     }()
     
-    let teamNameLabel: UILabel = {
+    let offerNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
         label.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.init(name: "Avenir", size: 14) //.boldSystemFont(ofSize: 16)
         label.textAlignment = .center
         return label
     }()
