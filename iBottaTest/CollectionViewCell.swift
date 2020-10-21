@@ -8,9 +8,12 @@
 
 import UIKit
 
-//class CollectionViewCell: UICollectionViewCell {
-//
-//}
+struct Offer {
+    let image: String?
+    let name: String?
+    let value: String?
+}
+
 
 class OfferCell: UICollectionViewCell {
     
@@ -18,20 +21,21 @@ class OfferCell: UICollectionViewCell {
         
         didSet {
             guard let offerImage = offer?.image else { return }
+            guard let offerValue = offer?.value else { return }
             guard let offerName = offer?.name else { return }
             
             offerImageView.image = UIImage(named: offerImage)
+            offerValueLabel.text = offerValue
             offerNameLabel.text = offerName
         }
     }
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        
         setCellShadow()
     }
-    
     
     
     func setCellShadow() {
@@ -44,17 +48,22 @@ class OfferCell: UICollectionViewCell {
         self.layer.cornerRadius = 5
     }
     
+    
     func setup() {
         self.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
         
         self.addSubview(offerImageView)
+        self.addSubview(offerValueLabel)
         self.addSubview(offerNameLabel)
-        
+
         
         offerImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
-        offerNameLabel.anchor(top: offerImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
         
+        offerValueLabel.anchor(top: offerImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        
+        offerNameLabel.anchor(top: offerValueLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
     }
+    
     
     let offerImageView: UIImageView = {
         let iv = UIImageView()
@@ -67,23 +76,24 @@ class OfferCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Name"
         label.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        label.font = UIFont.init(name: "Avenir", size: 12)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let offerValueLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Current Value"
+        label.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
         label.font = UIFont.init(name: "Avenir", size: 14)
         label.textAlignment = .center
         return label
     }()
     
     
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not implemented.")
     }
-}
-
-
-
-struct Offer {
-    let image: String?
-    let name: String?
 }
 
 

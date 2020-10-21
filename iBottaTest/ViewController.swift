@@ -28,10 +28,8 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
         
         collectionView?.register(OfferCell.self, forCellWithReuseIdentifier: cellID)
-        
-        
-        
     }
+
     
     // Access to Offers.json file, decode JSON
     static func readJSONFromFile() -> [ItemOffer]? {
@@ -70,22 +68,22 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OfferCell
         guard let offerItem = offers?[indexPath.item] else { return cell }
         
-        cell.offerNameLabel.text = offerItem.name
         if offerItem.url != nil {
             cell.offerImageView.image = UIImage(url: URL(string: offerItem.url!))
         } else { print("No offerItem found") }
-        
-        
+        cell.offerValueLabel.text = offerItem.current_value
+        cell.offerNameLabel.text = offerItem.name
+
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width / 2) - 16, height: 150)
+        return CGSize(width: (view.frame.width / 2) - 16, height: 160)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,  insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 8)
     }
     
 }
