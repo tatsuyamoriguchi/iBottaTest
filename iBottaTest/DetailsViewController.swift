@@ -22,22 +22,28 @@ class DetailsViewController: UIViewController {
         
         mainView.likeAction = { [weak self] in self?.likeAction() }
         
-        print(selectedOffer?.current_value)
-        print(selectedOffer?.description)
-        print(selectedOffer?.name)
-        print(selectedOffer?.terms)
         print(selectedOffer?.url)
+        print(selectedOffer?.name)
+        print(selectedOffer?.description)
+        print(selectedOffer?.current_value)
+        print(selectedOffer?.terms)
         print(selectedOffer?.id)
         
-        if selectedOffer?.url != nil {
+        if selectedOffer?.url != nil, selectedOffer?.name != nil, selectedOffer?.description != nil, selectedOffer?.current_value != nil, selectedOffer?.terms != nil, selectedOffer?.id != nil {
+
             self.mainView.contentView.image = UIImage(url: URL(string: (selectedOffer?.url)!))
+            self.mainView.nameLabel.text = "Product Name: " + ((selectedOffer?.name)!)
+            self.mainView.descriptionLabel.text = "Description: " + (selectedOffer?.description)!
+            self.mainView.currentValueLabel.text = "Offer: " + (selectedOffer?.current_value)!
+            self.mainView.termsLabel.text = "Terms: " + (selectedOffer?.terms)!
+            self.mainView.idLabel.text = "Product ID: " + (selectedOffer?.id)!
+
         } else {
-            print("ERROR: No url is available.")
+            print("ERROR: Some data is not available.")
         }
         
-        self.mainView.nameLabel.text = selectedOffer?.name
-        self.mainView.descriptionLabel.text = selectedOffer?.description
-        self.mainView.currentValueLabel.text = selectedOffer?.current_value
+        
+        
         
         
         
@@ -49,7 +55,6 @@ class DetailsViewController: UIViewController {
         
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         
         
     }
@@ -76,9 +81,7 @@ class DetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func saveTapped() {
-        
-    }
+
     
     override func loadView() {
         self.view = MainView(frame: UIScreen.main.bounds)

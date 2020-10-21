@@ -44,6 +44,9 @@ class MainView: UIView {
         self.addSubview(nameLabel)
         self.addSubview(descriptionLabel)
         self.addSubview(currentValueLabel)
+        self.addSubview(termsLabel)
+        self.addSubview(idLabel)
+        
         
         contentView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
         
@@ -55,7 +58,11 @@ class MainView: UIView {
         
         currentValueLabel.anchor(top: descriptionLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
 
+        termsLabel.anchor(top: currentValueLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
         
+        idLabel.anchor(top: termsLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        
+
     }
     
     
@@ -95,15 +102,31 @@ class MainView: UIView {
 
     let currentValueLabel: UILabel = {
        let labelCurrentValue = UILabel()
-        labelCurrentValue.text = "Description"
+        labelCurrentValue.text = "Current Value"
         labelCurrentValue.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
         labelCurrentValue.font = UIFont.init(name: "AvenirNext-Regular", size: 16)
         labelCurrentValue.textAlignment = .left
         return labelCurrentValue
     }()
 
-    
-    
+    let termsLabel: UILabel = {
+       let labelTerms = UILabel()
+        labelTerms.text = "Terms"
+        labelTerms.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        labelTerms.font = UIFont.init(name: "AvenirNext-Regular", size: 16)
+        labelTerms.textAlignment = .left
+        return labelTerms
+    }()
+
+    let idLabel: UILabel = {
+       let labelID = UILabel()
+        labelID.text = "ID"
+        labelID.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        labelID.font = UIFont.init(name: "AvenirNext-Regular", size: 16)
+        labelID.textAlignment = .left
+        return labelID
+    }()
+
 
 }
 
