@@ -43,15 +43,7 @@ class MainView: UIView {
     func setup() {
         self.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
 
-        let scrollView: UIScrollView = {
-            let scrollV = UIScrollView()
-           scrollV.frame = scrollV.bounds
-            scrollV.translatesAutoresizingMaskIntoConstraints = false
-           scrollV.contentSize = CGSize(width: scrollV.frame.width, height: scrollV.frame.height + 2000)
-            //scrollV.setContentOffset(CGPoint(x: 0, y: 1000), animated: true)
 
-            return scrollV
-        }()
         
         self.addSubview(scrollView)
 
@@ -75,11 +67,11 @@ class MainView: UIView {
         
         scrollView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         
-        contentView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        contentView.anchor(top: scrollView.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         likeButton.anchor(top: contentView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
         
-        currentValueLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        currentValueLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
 
         termsLabel.anchor(top: currentValueLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
 
@@ -157,16 +149,19 @@ class MainView: UIView {
         return labelID
     }()
     
+        
     // To enable DetailView scrolled
 //    var contentViewSize: CGSize { return CGSize(width: self.frame.width, height: self.frame.height + 400) }
-//
-//     let scrollView: UIScrollView = {
-//         let scrollV = UIScrollView()
-//        scrollV.frame = scrollV.bounds
-//         scrollV.translatesAutoresizingMaskIntoConstraints = false
-//        scrollV.contentSize = CGSize(width: scrollV.frame.width, height: scrollV.frame.height + 2000)
-//         return scrollV
-//     }()
+
+    let scrollView: UIScrollView = {
+        let scrollV = UIScrollView()
+        scrollV.frame = scrollV.bounds
+        scrollV.translatesAutoresizingMaskIntoConstraints = false
+        scrollV.contentSize = CGSize(width: scrollV.frame.width, height: scrollV.frame.height + 800)
+        //scrollV.setContentOffset(CGPoint(x: 0, y: 1000), animated: true)
+        
+        return scrollV
+    }()
 //
 //     let containerView: UIView = {
 //        let view = UIView()
