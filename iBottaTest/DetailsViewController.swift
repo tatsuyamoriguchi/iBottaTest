@@ -11,8 +11,10 @@ import UIKit
 class DetailsViewController: UIViewController {
     
     var mainView: MainView { return self.view as! MainView }
+    
     var liked = false
     var selectedOffer: ItemOffer?
+    
     
     
     override func viewDidLoad() {
@@ -20,15 +22,16 @@ class DetailsViewController: UIViewController {
         view.backgroundColor = .lightGray
         title = "Offer Details View"
         
+
         mainView.likeAction = { [weak self] in self?.likeAction() }
         
-        print(selectedOffer?.url)
-        print(selectedOffer?.name)
-        print(selectedOffer?.description)
-        print(selectedOffer?.current_value)
-        print(selectedOffer?.terms)
-        print(selectedOffer?.id)
-        
+//        print(selectedOffer?.url)
+//        print(selectedOffer?.name)
+//        print(selectedOffer?.description)
+//        print(selectedOffer?.current_value)
+//        print(selectedOffer?.terms)
+//        print(selectedOffer?.id)
+
         if selectedOffer?.url != nil, selectedOffer?.name != nil, selectedOffer?.description != nil, selectedOffer?.current_value != nil, selectedOffer?.terms != nil, selectedOffer?.id != nil {
 
             self.mainView.contentView.image = UIImage(url: URL(string: (selectedOffer?.url)!))
@@ -41,52 +44,39 @@ class DetailsViewController: UIViewController {
         } else {
             print("ERROR: Some data is not available.")
         }
-        
-        
-        
-        
-        
-        
-            /*
-             if offerItem.url != nil {
-                 cell.offerImageView.image = UIImage(url: URL(string: offerItem.url!))
-             } else { print("No offerItem found") }
-             */
-        
-        
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        
-        
+    
     }
     
     
-        private func likeAction() {
-            self.liked = !self.liked
-            if self.liked {
-                UIView.animate(withDuration: 0.5, animations:  {
-                    self.mainView.likeButton.setTitle("♥️ My Favorite", for: .normal)
-                    self.mainView.contentView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-                })
-            } else {
-                UIView.animate(withDuration: 0.5, animations:  {
-                    self.mainView.likeButton.setTitle("🤍 Favorite?", for: .normal)
-                    self.mainView.contentView.backgroundColor = .clear
-                })
-                
-            }
+    
+    private func likeAction() {
+        self.liked = !self.liked
+        if self.liked {
+            UIView.animate(withDuration: 0.5, animations:  {
+                self.mainView.likeButton.setTitle("♥️ My Favorite", for: .normal)
+                self.mainView.contentView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, animations:  {
+                self.mainView.likeButton.setTitle("🤍 Favorite?", for: .normal)
+                self.mainView.contentView.backgroundColor = .clear
+            })
         }
+    }
         
     
     @objc func cancelTapped() {
         dismiss(animated: true, completion: nil)
     }
     
-
-    
     override func loadView() {
         self.view = MainView(frame: UIScreen.main.bounds)
+        
     }
     
 }
+
 
 
