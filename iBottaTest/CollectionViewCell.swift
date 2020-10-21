@@ -57,9 +57,9 @@ class OfferCell: UICollectionViewCell {
         self.addSubview(offerNameLabel)
 
         
-        offerImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        offerImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 120)
         
-        offerValueLabel.anchor(top: offerImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        offerValueLabel.anchor(top: offerImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
         
         offerNameLabel.anchor(top: offerValueLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
     }
@@ -72,25 +72,25 @@ class OfferCell: UICollectionViewCell {
         return iv
     }()
     
-    let offerNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Name"
-        label.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
-        label.font = UIFont.init(name: "Avenir", size: 12)
-        label.textAlignment = .center
-        return label
-    }()
     
     let offerValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Current Value"
-        label.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
-        label.font = UIFont.init(name: "Avenir", size: 14)
-        label.textAlignment = .center
-        return label
+        let labelValue = UILabel()
+        labelValue.text = "Current Value"
+        labelValue.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        labelValue.font = UIFont.init(name: "AvenirNext-DemiBold", size: 12)
+        labelValue.textAlignment = .left
+        return labelValue
     }()
     
-    
+    let offerNameLabel: UILabel = {
+        let labelName = UILabel()
+        labelName.text = "Name"
+        labelName.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        labelName.font = UIFont.init(name: "AvenirNext-Regular", size: 11)
+        labelName.textAlignment = .left
+        return labelName
+    }()
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not implemented.")
     }

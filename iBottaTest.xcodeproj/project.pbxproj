@@ -92,12 +92,12 @@
 				8C53B674253E924600A3A7E4 /* AppDelegate.swift */,
 				8C53B676253E924600A3A7E4 /* SceneDelegate.swift */,
 				8C53B678253E924600A3A7E4 /* ViewController.swift */,
+				8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */,
 				8C53B67D253E924700A3A7E4 /* Assets.xcassets */,
 				8C53B67F253E924700A3A7E4 /* LaunchScreen.storyboard */,
 				8C53B682253E924700A3A7E4 /* Info.plist */,
 				8C53B69A253EA0F000A3A7E4 /* ColorConvert.swift */,
 				8CC6A52C253FF7040042E53C /* OfferData.swift */,
-				8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */,
 			);
 			path = iBottaTest;
 			sourceTree = "<group>";
