@@ -13,12 +13,10 @@ class MainView: UIView {
     var likeAction: (() -> Void)?
     
     override init(frame: CGRect) {
+
         super.init(frame: frame)
         self.backgroundColor = .white
-//        setupViews()
-//        setupConstraints()
         setup()
-        
         addAction()
 
     }
@@ -39,49 +37,27 @@ class MainView: UIView {
     
     
     func setup() {
-         self.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
-         
-         self.addSubview(contentView)
-         self.addSubview(likeButton)
-         
-         contentView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
-         
-         likeButton.anchor(top: contentView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
-         
-      }
+        self.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
+        
+        self.addSubview(contentView)
+        self.addSubview(likeButton)
+        self.addSubview(nameLabel)
+        self.addSubview(descriptionLabel)
+        self.addSubview(currentValueLabel)
+        
+        contentView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
+        
+        likeButton.anchor(top: contentView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        
+        nameLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        
+        descriptionLabel.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        
+        currentValueLabel.anchor(top: descriptionLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+
+        
+    }
     
-    
-//    func setupViews() {
-//        self.addSubview(contentView)
-//        self.addSubview(likeButton)
-//
-//    }
-//
-//    func setupConstraints() {
-//        self.translatesAutoresizingMaskIntoConstraints = false
-//
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-//        contentView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-//        contentView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-//        contentView.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
-//
-//        likeButton.translatesAutoresizingMaskIntoConstraints = false
-//        likeButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
-//        likeButton.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10).isActive = true
-//
-//
-//    }
-    
-    
-    
-    
-//    let contentView: UIView = {
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-//        view.layer.borderWidth = 1.0
-//        view.layer.borderColor = UIColor.lightGray.cgColor
-//        return view
-//    }()
     
     let contentView: UIImageView = {
         let iv = UIImageView()
@@ -91,12 +67,43 @@ class MainView: UIView {
     }()
     
     
+    
     let likeButton: UIButton =  {
         let button = UIButton(type: .system)
-        button.setTitle("Like", for: .normal)
+        button.setTitle("🤍 Favorite?", for: .normal)
+        
         return button
     }()
     
+    let nameLabel: UILabel = {
+       let labelName = UILabel()
+        labelName.text = "Name"
+        labelName.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        labelName.font = UIFont.init(name: "AvenirNext-Regular", size: 16)
+        labelName.textAlignment = .left
+        return labelName
+    }()
+
+    let descriptionLabel: UILabel = {
+       let labelDescription = UILabel()
+        labelDescription.text = "Description"
+        labelDescription.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        labelDescription.font = UIFont.init(name: "AvenirNext-Regular", size: 16)
+        labelDescription.textAlignment = .left
+        return labelDescription
+    }()
+
+    let currentValueLabel: UILabel = {
+       let labelCurrentValue = UILabel()
+        labelCurrentValue.text = "Description"
+        labelCurrentValue.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
+        labelCurrentValue.font = UIFont.init(name: "AvenirNext-Regular", size: 16)
+        labelCurrentValue.textAlignment = .left
+        return labelCurrentValue
+    }()
+
     
+    
+
 }
 

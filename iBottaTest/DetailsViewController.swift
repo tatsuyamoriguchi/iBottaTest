@@ -21,8 +21,6 @@ class DetailsViewController: UIViewController {
         title = "Offer Details View"
         
         mainView.likeAction = { [weak self] in self?.likeAction() }
-            
-        
         
         print(selectedOffer?.current_value)
         print(selectedOffer?.description)
@@ -31,6 +29,23 @@ class DetailsViewController: UIViewController {
         print(selectedOffer?.url)
         print(selectedOffer?.id)
         
+        if selectedOffer?.url != nil {
+            self.mainView.contentView.image = UIImage(url: URL(string: (selectedOffer?.url)!))
+        } else {
+            print("ERROR: No url is available.")
+        }
+        
+        self.mainView.nameLabel.text = selectedOffer?.name
+        self.mainView.descriptionLabel.text = selectedOffer?.description
+        self.mainView.currentValueLabel.text = selectedOffer?.current_value
+        
+        
+        
+            /*
+             if offerItem.url != nil {
+                 cell.offerImageView.image = UIImage(url: URL(string: offerItem.url!))
+             } else { print("No offerItem found") }
+             */
         
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
@@ -44,12 +59,12 @@ class DetailsViewController: UIViewController {
             self.liked = !self.liked
             if self.liked {
                 UIView.animate(withDuration: 0.5, animations:  {
-                    self.mainView.likeButton.setTitle("Dislike", for: .normal)
+                    self.mainView.likeButton.setTitle("♥️ My Favorite", for: .normal)
                     self.mainView.contentView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
                 })
             } else {
                 UIView.animate(withDuration: 0.5, animations:  {
-                    self.mainView.likeButton.setTitle("Like", for: .normal)
+                    self.mainView.likeButton.setTitle("🤍 Favorite?", for: .normal)
                     self.mainView.contentView.backgroundColor = .clear
                 })
                 
@@ -62,8 +77,6 @@ class DetailsViewController: UIViewController {
     }
     
     @objc func saveTapped() {
-        
-        
         
     }
     
