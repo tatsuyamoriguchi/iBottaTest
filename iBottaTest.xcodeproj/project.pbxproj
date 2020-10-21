@@ -22,6 +22,8 @@
 		8CC6A531253FF7FF0042E53C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */; };
 		8CC6A533254009D40042E53C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A532254009D40042E53C /* DetailsViewController.swift */; };
 		8CC6A534254009D40042E53C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A532254009D40042E53C /* DetailsViewController.swift */; };
+		8CC6A53625402F110042E53C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A53525402F110042E53C /* MainView.swift */; };
+		8CC6A53725402F110042E53C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A53525402F110042E53C /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,7 @@
 		8CC6A52C253FF7040042E53C /* OfferData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferData.swift; sourceTree = "<group>"; };
 		8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		8CC6A532254009D40042E53C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		8CC6A53525402F110042E53C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,7 @@
 				8C53B69A253EA0F000A3A7E4 /* ColorConvert.swift */,
 				8CC6A52C253FF7040042E53C /* OfferData.swift */,
 				8CC6A532254009D40042E53C /* DetailsViewController.swift */,
+				8CC6A53525402F110042E53C /* MainView.swift */,
 			);
 			path = iBottaTest;
 			sourceTree = "<group>";
@@ -218,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C53B679253E924600A3A7E4 /* ViewController.swift in Sources */,
+				8CC6A53625402F110042E53C /* MainView.swift in Sources */,
 				8C53B69B253EA0F000A3A7E4 /* ColorConvert.swift in Sources */,
 				8CC6A530253FF7FF0042E53C /* CollectionViewCell.swift in Sources */,
 				8CC6A52D253FF7040042E53C /* OfferData.swift in Sources */,
@@ -234,6 +239,7 @@
 				8CC6A52E253FF7040042E53C /* OfferData.swift in Sources */,
 				8C53B68C253E924800A3A7E4 /* iBottaTestTests.swift in Sources */,
 				8CC6A531253FF7FF0042E53C /* CollectionViewCell.swift in Sources */,
+				8CC6A53725402F110042E53C /* MainView.swift in Sources */,
 				8CC6A534254009D40042E53C /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -364,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

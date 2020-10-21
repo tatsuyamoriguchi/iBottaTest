@@ -10,8 +10,12 @@ import UIKit
 
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+
+    // MARK: - Properties
     let cellID = "cellID"
     var offers: [ItemOffer]?
+    var selectedOffer: ItemOffer?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,14 +86,21 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        
-        
+
+        // Show DetailsViewController view when tapping an item
         let rootVC = DetailsViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         //navVC.modalPresentationStyle = .fullScreen
+
+        // To pass TemOffer type data to DetailsViewController
+        rootVC.selectedOffer = offers?[indexPath.item]
+
         present(navVC, animated: true)
         
+        
     }
+    
+    
     
     
 }
