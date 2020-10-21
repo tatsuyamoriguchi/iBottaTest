@@ -25,9 +25,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         let layout = UICollectionViewFlowLayout()
-        let mainVC = ViewController(collectionViewLayout: layout)
-        
-        window?.rootViewController = UINavigationController(rootViewController: mainVC)
+        let collectionVC = ViewController(collectionViewLayout: layout)
+        let navigation = UINavigationController(rootViewController: collectionVC)
+        window?.rootViewController = navigation //UINavigationController(rootViewController: collectionVC)
         
     }
 

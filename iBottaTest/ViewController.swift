@@ -19,8 +19,9 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // Store JSON data to offers
         offers = ViewController.readJSONFromFile()
 
-        
         collectionView?.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
+        
+        
         navigationItem.title = "iBottaTest Offers"
         navigationController?.navigationBar.barTintColor = ColorConvert().hexStringToUIColor(hex: "ABFCD6", alphaValue: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
@@ -79,7 +80,20 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        
+        
+        let rootVC = DetailsViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        //navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+        
+    }
+    
+    
 }
+
 
 
 // to check if url data is not nil, then convert url string data to URL to display image in collection view cell
