@@ -11,29 +11,70 @@ import UIKit
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellID = "cellID"
-    let offers = [Offer(image: "iu-1.jpg", name: "Banana"),
-                 Offer(image: "iu-2.jpg", name: "Peach"),
-                 Offer(image: "iu-3.jpg", name: "Kiwi"),
-                 Offer(image: "iu-4.jpg", name: "Grape"),
-                 Offer(image: "iu-5.jpg", name: "Apple"),
-                 Offer(image: "iu-6.jpg", name: "Pear"),
-                 Offer(image: "iu-7.jpg", name: "Passion Fruit"),
-                 Offer(image: "iu-8.jpg", name: "Lemon"),
-                 Offer(image: "iu-9.jpg", name: "Strawberry"),
-                 Offer(image: "iu-10.jpg", name: "Pomegranate"),
-                 Offer(image: "iu-11.jpg", name: "Watermelon"),
-                 Offer(image: "iu-12.jpg", name: "Orange"),
-                 Offer(image: "iu-13.jpg", name: "Blueberry"),
-                 Offer(image: "iu-14.jpg", name: "Blackberry"),
-                 Offer(image: "iu-15.jpg", name: "Cherry"),
-                 Offer(image: "iu-16.png", name: "Scotch Brite")
-        
-    ]
+    
+    // Access to Offers.json file, decode JSON
+    static func readJSONFromFile() -> [Offer]? {
+
+        // url to a local json file
+        if let path = Bundle.main.path(forResource: "Offers", ofType: "json") {
+        let fileUrl = URL(fileURLWithPath: path)
+            
+            do {
+                // Getting data from JSON file
+                let data = try Data(contentsOf: fileUrl)
+                // Decode json format data to Offer codable
+                let decoder = JSONDecoder()
+                let json = try decoder.decode([Offer].self, from: data)
+                // For test to see the json contents in console
+                    print("json: ")
+                    print(json as Any)
+                    print("**********")
+
+                return json
+
+            } catch {
+                // Handle error here
+                print("ERROR: \(error)")
+            }
+        }
+        return nil
+    }
+    
+    
+    /*
+     // JSON data sample
+     {
+     "id":"110579",
+     "url":"https://product-images.ibotta.com/offer/dUxYcQPeq391-DiywFZF8g-normal.png",
+     "name":"Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges",
+     "description":"Any variety - 2 ct. pack or larger",
+     "terms":"Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger.",
+     "current_value":"$0.75 Cash Back"}
+     */
+    
+    // Map json data
+    struct Offer: Codable {
+        var id: String?
+        var url: String?
+        var name: String?
+        var description: String?
+        var terms: String?
+        var current_value: String?
+    }
+    
+    
+    
+    
+    
+    var offers: [Offer]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        offers = ViewController.readJSONFromFile()
+
         collectionView?.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
-        navigationItem.title = "iBottaTest"
+        navigationItem.title = "iBottaTest Offers"
         navigationController?.navigationBar.barTintColor = ColorConvert().hexStringToUIColor(hex: "ABFCD6", alphaValue: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
         
@@ -44,12 +85,13 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return offers.count
+        return offers?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OfferCell
-        cell.offer = offers[indexPath.item]
+        cell.offerNameLabel.text = offers?[indexPath.item].name
+        
         return cell
     }
     
@@ -123,7 +165,7 @@ class OfferCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Name"
         label.textColor = ColorConvert().hexStringToUIColor(hex: "4A4A4A", alphaValue: 1.0)
-        label.font = UIFont.init(name: "Avenir", size: 14) //.boldSystemFont(ofSize: 16)
+        label.font = UIFont.init(name: "Avenir", size: 14)
         label.textAlignment = .center
         return label
     }()

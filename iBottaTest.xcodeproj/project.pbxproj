@@ -14,6 +14,8 @@
 		8C53B681253E924700A3A7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C53B67F253E924700A3A7E4 /* LaunchScreen.storyboard */; };
 		8C53B68C253E924800A3A7E4 /* iBottaTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C53B68B253E924800A3A7E4 /* iBottaTestTests.swift */; };
 		8C53B69B253EA0F000A3A7E4 /* ColorConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C53B69A253EA0F000A3A7E4 /* ColorConvert.swift */; };
+		8CC6A52A253FBE660042E53C /* Offers.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC6A529253FBE660042E53C /* Offers.json */; };
+		8CC6A52B253FBE660042E53C /* Offers.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC6A529253FBE660042E53C /* Offers.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,7 @@
 		8C53B68B253E924800A3A7E4 /* iBottaTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBottaTestTests.swift; sourceTree = "<group>"; };
 		8C53B68D253E924800A3A7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C53B69A253EA0F000A3A7E4 /* ColorConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConvert.swift; sourceTree = "<group>"; };
+		8CC6A529253FBE660042E53C /* Offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offers.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 		8C53B673253E924600A3A7E4 /* iBottaTest */ = {
 			isa = PBXGroup;
 			children = (
+				8CC6A529253FBE660042E53C /* Offers.json */,
 				8C53B674253E924600A3A7E4 /* AppDelegate.swift */,
 				8C53B676253E924600A3A7E4 /* SceneDelegate.swift */,
 				8C53B678253E924600A3A7E4 /* ViewController.swift */,
@@ -180,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC6A52A253FBE660042E53C /* Offers.json in Resources */,
 				8C53B681253E924700A3A7E4 /* LaunchScreen.storyboard in Resources */,
 				8C53B67E253E924700A3A7E4 /* Assets.xcassets in Resources */,
 			);
@@ -189,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC6A52B253FBE660042E53C /* Offers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
