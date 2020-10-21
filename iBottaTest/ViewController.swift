@@ -99,15 +99,10 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         
     }
-    
-    
-    
-    
 }
 
-
-
-// to check if url data is not nil, then convert url string data to URL to display image in collection view cell
+// MARK: - Extension
+// To check if url data is not nil, then convert url string data to URL to display image in collection view cell
 extension UIImage {
   convenience init?(url: URL?) {
     guard let url = url else { return nil }

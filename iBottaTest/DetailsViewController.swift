@@ -17,7 +17,7 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .lightGray
         title = "Offer Details View"
         
         mainView.likeAction = { [weak self] in self?.likeAction() }
