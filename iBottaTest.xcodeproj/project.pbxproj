@@ -16,6 +16,10 @@
 		8C53B69B253EA0F000A3A7E4 /* ColorConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C53B69A253EA0F000A3A7E4 /* ColorConvert.swift */; };
 		8CC6A52A253FBE660042E53C /* Offers.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC6A529253FBE660042E53C /* Offers.json */; };
 		8CC6A52B253FBE660042E53C /* Offers.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC6A529253FBE660042E53C /* Offers.json */; };
+		8CC6A52D253FF7040042E53C /* OfferData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A52C253FF7040042E53C /* OfferData.swift */; };
+		8CC6A52E253FF7040042E53C /* OfferData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A52C253FF7040042E53C /* OfferData.swift */; };
+		8CC6A530253FF7FF0042E53C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */; };
+		8CC6A531253FF7FF0042E53C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +45,8 @@
 		8C53B68D253E924800A3A7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C53B69A253EA0F000A3A7E4 /* ColorConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConvert.swift; sourceTree = "<group>"; };
 		8CC6A529253FBE660042E53C /* Offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offers.json; sourceTree = "<group>"; };
+		8CC6A52C253FF7040042E53C /* OfferData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferData.swift; sourceTree = "<group>"; };
+		8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,8 @@
 				8C53B67F253E924700A3A7E4 /* LaunchScreen.storyboard */,
 				8C53B682253E924700A3A7E4 /* Info.plist */,
 				8C53B69A253EA0F000A3A7E4 /* ColorConvert.swift */,
+				8CC6A52C253FF7040042E53C /* OfferData.swift */,
+				8CC6A52F253FF7FF0042E53C /* CollectionViewCell.swift */,
 			);
 			path = iBottaTest;
 			sourceTree = "<group>";
@@ -207,6 +215,8 @@
 			files = (
 				8C53B679253E924600A3A7E4 /* ViewController.swift in Sources */,
 				8C53B69B253EA0F000A3A7E4 /* ColorConvert.swift in Sources */,
+				8CC6A530253FF7FF0042E53C /* CollectionViewCell.swift in Sources */,
+				8CC6A52D253FF7040042E53C /* OfferData.swift in Sources */,
 				8C53B675253E924600A3A7E4 /* AppDelegate.swift in Sources */,
 				8C53B677253E924600A3A7E4 /* SceneDelegate.swift in Sources */,
 			);
@@ -216,7 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC6A52E253FF7040042E53C /* OfferData.swift in Sources */,
 				8C53B68C253E924800A3A7E4 /* iBottaTestTests.swift in Sources */,
+				8CC6A531253FF7FF0042E53C /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
