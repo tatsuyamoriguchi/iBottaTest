@@ -122,6 +122,8 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
 // MARK: - Extension
 // To check if url data is not nil, then convert url string data to URL to display image in collection view cell
+// Performance issue remains, need to get image on background thread or limit download the number of image from internet
+// at once
 extension UIImage {
   convenience init?(url: URL?) {
     guard let url = url else { return nil }
