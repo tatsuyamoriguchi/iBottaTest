@@ -33,7 +33,6 @@ class DetailsViewController: UIViewController {
              let fetchRequest : NSFetchRequest<Like> = Like.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@", itemOffer as CVarArg)
              let fetchedResults = try context.fetch(fetchRequest)
-             //if let aContact = fetchedResults.first {
             aLike = fetchedResults.first
 
             if (aLike != nil) {
@@ -48,80 +47,8 @@ class DetailsViewController: UIViewController {
          catch {
              print ("fetch task failed", error)
          }
-        
-//        // Cast the result returned from the fetchRequest as Person class
-//         let fetchRequest = NSFetchRequest<Like>(entityName: "Like")
-////        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Like")
-//
-//        // fetch records which match this condition
-//        fetchRequest.predicate = NSPredicate(format: "id == %@", itemOffer.id! as CVarArg)
-//
-//        if (fetchRequest.predicate != nil) {
-//            likeData = true
-//        } else {
-//            likeData = false
-//        }
-//
-//        do {
-//            try context.fetch(fetchRequest)
-//        } catch let error as NSError {
-//            print("Could not fetch. \(error), \(error.userInfo)")
-//        }
-//
-//        do {
-//            localData = try context.fetch(Like.fetchRequest())
-//        } catch {
-//            print(error.localizedDescription)
-//        }
     }
     
-    
-    /*
-     var contactIdentifierString = ""
-
-     func userSelectedContact(contactIdentifier: String) {
-
-         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-         do {
-             let fetchRequest : NSFetchRequest<Contact> = Contact.fetchRequest()
-             fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", contactIdentifier)
-             let fetchedResults = try context.fetch(fetchRequest) as! [Contact]
-             if let aContact = fetchedResults.first {
-                providerName.text = aContact.providerName
-             }
-         }
-         catch {
-             print ("fetch task failed", error)
-         }
-
-     }
-     */
-    
-/*
-     var people : [Person] = []
-
-     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-         return
-     }
-
-     let context = appDelegate.persistentContainer.viewContext
-
-     // Cast the result returned from the fetchRequest as Person class
-     let fetchRequest = NSFetchRequest<Person>(entityName: "Person")
-
-     // fetch records which match this condition
-     fetchRequest.predicate = NSPredicate(format: "money > %i", 100)
-
-     do {
-       people = try context.fetch(fetchRequest)
-     } catch let error as NSError {
-       print("Could not fetch. \(error), \(error.userInfo)")
-     }
-     */
-    
-    
-
     
     
     
@@ -145,22 +72,8 @@ class DetailsViewController: UIViewController {
                 print("no id found in CoreData.")
             }
         }
-        
-        
 
-        
         mainView.likeAction = { [weak self] in self?.likeAction() }
-        
-        
-        
-        
-        
-//        print(selectedOffer?.url)
-//        print(selectedOffer?.name)
-//        print(selectedOffer?.description)
-//        print(selectedOffer?.current_value)
-//        print(selectedOffer?.terms)
-//        print(selectedOffer?.id)
 
         if selectedOffer?.url != nil, selectedOffer?.name != nil, selectedOffer?.description != nil, selectedOffer?.current_value != nil, selectedOffer?.terms != nil, selectedOffer?.id != nil {
 
@@ -220,21 +133,13 @@ class DetailsViewController: UIViewController {
                 self.mainView.contentView.backgroundColor = .clear
                 if self.selectedOffer?.id != nil {
                     
-                    // delete the item from CoreData, instead
-                    //self.saveLike(id: (self.selectedOffer?.id)!, like: false)
                     
                     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
                     // Reference to managed object context
                     let context = appDelegate.persistentContainer.viewContext
-                    
                     let predicate = NSPredicate(format: "id == %@", (self.selectedOffer?.id)! as CVarArg)
-                    
-                    print("*******self.selectedOffer?.id!")
-                    print(self.selectedOffer?.id! as Any)
-                    
                     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Like")
                     fetchRequest.predicate = predicate
-                    
                     
                     do {
                         let fetchedResults = try context.fetch(fetchRequest) as! [Like]
@@ -268,24 +173,6 @@ class DetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func saveLike(id: String, like: Bool) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        // Reference to managed object context
-        let context = appDelegate.persistentContainer.viewContext
-
-        let selectedOfferLike = Like(context: context)
-        selectedOfferLike.id = id
-        selectedOfferLike.like = like
-        do {
-            try context.save()
-            print("context was saved")
-            
-        }catch{
-            print("Saving Error: \(error.localizedDescription)")
-        }
-        
-    }
     
     override func loadView() {
         self.view = MainView(frame: UIScreen.main.bounds)
@@ -293,6 +180,3 @@ class DetailsViewController: UIViewController {
     }
     
 }
-
-
-
