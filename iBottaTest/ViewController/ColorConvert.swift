@@ -8,7 +8,10 @@
 
 import UIKit
 
+
 class ColorConvert {
+    
+    // Convert hex color data to UIColor RGB format
     func hexStringToUIColor (hex:String, alphaValue: Double) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
@@ -21,9 +24,7 @@ class ColorConvert {
         }
 
         var rgbValue:UInt64 = 0
-        //Scanner(string: cString).scanHexInt32(&rgbValue)
         Scanner(string: cString).scanHexInt64(&rgbValue)
-
         
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,

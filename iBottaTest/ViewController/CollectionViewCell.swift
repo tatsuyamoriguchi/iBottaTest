@@ -8,6 +8,7 @@
 
 import UIKit
 
+// To map JSON data
 struct Offer {
     let image: String?
     let name: String?

@@ -21,7 +21,7 @@ import Foundation
 
 // Map json data
 struct ItemOffer: Codable {
-    var id: String?
+    var id: String
     var url: String?
     var name: String?
     var description: String?

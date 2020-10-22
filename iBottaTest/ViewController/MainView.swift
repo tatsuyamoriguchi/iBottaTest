@@ -8,11 +8,10 @@
 
 import UIKit
 
+// class name MainView may be mis-leading
 class MainView: UIView {
     
     var likeAction: (() -> Void)?
-    
-
     
     override init(frame: CGRect) {
 
@@ -20,9 +19,6 @@ class MainView: UIView {
         self.backgroundColor = .white
         setup()
         addAction()
-
-        
-  
     }
     
     
@@ -39,11 +35,9 @@ class MainView: UIView {
         
     }
     
-    
+    // Add scrollview, product data, and layout
     func setup() {
         self.backgroundColor = ColorConvert().hexStringToUIColor(hex: "FFFFFF", alphaValue: 1.0)
-
-
         
         self.addSubview(scrollView)
 
@@ -55,15 +49,6 @@ class MainView: UIView {
         scrollView.addSubview(termsLabel)
         scrollView.addSubview(idLabel)
 
-        
-//        self.addSubview(contentView)
-//        self.addSubview(likeButton)
-//        self.addSubview(nameLabel)
-//        self.addSubview(descriptionLabel)
-//        self.addSubview(currentValueLabel)
-//        self.addSubview(termsLabel)
-//        self.addSubview(idLabel)
-        
         
         scrollView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         
@@ -84,7 +69,7 @@ class MainView: UIView {
 
     }
     
-    
+    // Product image
     lazy var contentView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -93,7 +78,7 @@ class MainView: UIView {
     }()
     
     
-    
+    // Favorite button
     let likeButton: UIButton =  {
         let button = UIButton(type: .system)
         button.setTitle("🤍 Favorite?", for: .normal)
@@ -101,6 +86,7 @@ class MainView: UIView {
         return button
     }()
     
+    // Product name
     let nameLabel: UILabel = {
        let labelName = UILabel()
         labelName.text = "Name"
@@ -111,6 +97,7 @@ class MainView: UIView {
         return labelName
     }()
 
+    // Product description
     let descriptionLabel: UILabel = {
        let labelDescription = UILabel()
         labelDescription.text = "Description"
@@ -121,6 +108,7 @@ class MainView: UIView {
         return labelDescription
     }()
 
+    // Product offer value
     let currentValueLabel: UILabel = {
        let labelCurrentValue = UILabel()
         labelCurrentValue.text = "Current Value"
@@ -131,6 +119,7 @@ class MainView: UIView {
         return labelCurrentValue
     }()
 
+    // Product offer terms
     let termsLabel: UILabel = {
        let labelTerms = UILabel()
         labelTerms.text = "Terms"
@@ -141,6 +130,7 @@ class MainView: UIView {
         return labelTerms
     }()
 
+    // Product ID, I assume this is immutable and non-optional
     let idLabel: UILabel = {
        let labelID = UILabel()
         labelID.text = "ID"
@@ -149,11 +139,8 @@ class MainView: UIView {
         labelID.textAlignment = .left
         return labelID
     }()
-    
-        
-    // To enable DetailView scrolled
-//    var contentViewSize: CGSize { return CGSize(width: self.frame.width, height: self.frame.height + 400) }
 
+    // Scroll view set its height to +800, not dynamically changes its height
     let scrollView: UIScrollView = {
         let scrollV = UIScrollView()
         scrollV.frame = scrollV.bounds
@@ -163,28 +150,5 @@ class MainView: UIView {
         
         return scrollV
     }()
-//
-//     let containerView: UIView = {
-//        let view = UIView()
-//         view.translatesAutoresizingMaskIntoConstraints = false
-//        view.frame.size = contentViewSize
-//         return view
-//     }()
-
     
 }
-
-
-
-/*
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        let scrollView = UIScrollView(frame: CGRect(x: 10, y: 10, width: view.frame.size.width - 20, height: view.frame.size.height - 20))
-        scrollView.backgroundColor = .blue
-        view.addSubview(scrollView)
-
-        scrollView.contentSize = CGSize(width: view.frame.width, height: 1000)
-    }
-
-*/

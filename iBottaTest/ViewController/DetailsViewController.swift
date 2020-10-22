@@ -13,18 +13,17 @@ class DetailsViewController: UIViewController {
     
     // MARK: - Properties
     var mainView: MainView { return self.view as! MainView }
-    
     var liked = false
     var selectedOffer: ItemOffer?
-    
-
+ 
     
     // Data
     var likeData: Bool?
     var aLike: Like?
     
     
-    
+    // Assuming that JSON file data format is immutable, I decided to use Core Data to keep track of
+    // Favorite data associated with product ID, which I assume non-optional
     func fetchData(itemOffer: String)  {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         // Reference to managed object context
@@ -37,10 +36,9 @@ class DetailsViewController: UIViewController {
 
             if (aLike != nil) {
                 liked = true
-                print("aLike")
-                print(aLike?.id as Any)
-                print(aLike?.like as Any)
+
              } else {
+                // if no data found, assign false to liked
                 liked = false
             }
          }
@@ -57,14 +55,14 @@ class DetailsViewController: UIViewController {
         view.backgroundColor = .lightGray
         title = "Offer Details View"
         
-        // Get selectedItemLike data from Core Data
         guard let itemOffer = selectedOffer?.id else { return }
+        // Get  data from Core Data
         self.fetchData(itemOffer: itemOffer)
+
         DispatchQueue.main.async {
             if self.liked == true {
-                print("********liked")
-                print(self.liked)
-                print("")
+                // If there is data in Core Data entity, which means a user pressed Favorite button in the past
+                // Change background color and heart icon to red
                 self.mainView.likeButton.setTitle("♥️ My Favorite", for: .normal)
                 self.mainView.contentView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
               
@@ -75,6 +73,7 @@ class DetailsViewController: UIViewController {
 
         mainView.likeAction = { [weak self] in self?.likeAction() }
 
+        // Load JSON data to UI
         if selectedOffer?.url != nil, selectedOffer?.name != nil, selectedOffer?.description != nil, selectedOffer?.current_value != nil, selectedOffer?.terms != nil, selectedOffer?.id != nil {
 
             self.mainView.contentView.image = UIImage(url: URL(string: (selectedOffer?.url)!))
@@ -88,12 +87,13 @@ class DetailsViewController: UIViewController {
             print("ERROR: Some data is not available.")
         }
 
+        // Back button to go back to ViewController UI. Swiping also let you go back there.
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backTapped)) //UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(backTapped))
     
     }
     
     
-    
+    // Function to press Favorite button
     private func likeAction() {
         self.liked = !self.liked
         if self.liked {
@@ -104,8 +104,7 @@ class DetailsViewController: UIViewController {
                 self.mainView.contentView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
                 
                 if self.selectedOffer?.id != nil {
-                    //self.saveLike(id: (self.selectedOffer?.id)!, like: true)
-                    
+                    // Save to Core Data if a user pressed Favorite button
                     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
                     // Reference to managed object context
                     let context = appDelegate.persistentContainer.viewContext
@@ -133,7 +132,7 @@ class DetailsViewController: UIViewController {
                 self.mainView.contentView.backgroundColor = .clear
                 if self.selectedOffer?.id != nil {
                     
-                    
+                    // Delete Core Data data if a user reverted Favorite to Not Favorite
                     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
                     // Reference to managed object context
                     let context = appDelegate.persistentContainer.viewContext
