@@ -71,7 +71,11 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         guard let offerItem = offers?[indexPath.item] else { return cell }
         
         if offerItem.url != nil {
-            cell.offerImageView.image = UIImage(url: URL(string: offerItem.url!))
+            
+            DispatchQueue.main.async {
+                cell.offerImageView.image = UIImage(url: URL(string: offerItem.url!))
+            }
+
         } else { print("No offerItem found") }
         cell.offerValueLabel.text = offerItem.current_value
         cell.offerNameLabel.text = offerItem.name
@@ -125,15 +129,14 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
 // Performance issue remains, need to get image on background thread or limit download the number of image from internet
 // at once
 extension UIImage {
-  convenience init?(url: URL?) {
-    guard let url = url else { return nil }
-            
-    do {
-      self.init(data: try Data(contentsOf: url))
-    } catch {
-      print("Cannot load image from url: \(url) with error: \(error)")
-      return nil
-    }
-  }
-}
 
+    convenience init?(url: URL?) {
+        guard let url = url else { return nil }
+        do {
+            self.init(data: try Data(contentsOf: url))
+        } catch {
+            print("Cannot load image from url: \(url) with error: \(error)")
+            return nil
+        }
+    }
+}
